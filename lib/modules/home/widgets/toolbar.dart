@@ -18,6 +18,7 @@ Widget toolBar() => Container(
               children: [
                 Icon(
                   HugeIcons.strokeRoundedArrowLeft02,
+                  size: 30,
                 ),
                 Text(
                   'Pokedex',

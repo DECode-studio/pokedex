@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pokedex/core/theme/app_colors.dart';
 import 'package:pokedex/modules/home/home_viewmodel.dart';
 
+import 'widgets/fab.dart';
 import 'widgets/screen.dart';
 
 class HomeView extends StatelessWidget {
@@ -24,6 +25,7 @@ class HomeView extends StatelessWidget {
           controller: controller,
           size: size,
         ),
+        floatingActionButton: fab(),
       ),
     );
   }

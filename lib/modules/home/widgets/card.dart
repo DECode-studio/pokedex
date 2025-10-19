@@ -5,6 +5,7 @@ import 'package:pokedex/core/constant/assets.dart';
 import 'package:pokedex/core/theme/app_colors.dart';
 import 'package:pokedex/core/theme/app_text_styles.dart';
 import 'package:pokedex/data/models/list_pokemon_model.dart';
+import 'package:pokedex/data/models/pokemon_model.dart';
 import 'package:pokedex/modules/home/home_viewmodel.dart';
 
 Widget cardData({
@@ -22,23 +23,10 @@ Widget cardData({
         ),
         builder: (_, snapshot) {
           if (!snapshot.hasData || snapshot.data == null) {
-            return Container(
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: AppColors.grass,
-                borderRadius: BorderRadius.circular(18),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.grass.withOpacity(0.3),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: CircularProgressIndicator(
-                strokeWidth: 4,
-                color: AppColors.white,
-              ),
+            return _loadData(
+              controller: controller,
+              indexData: indexData,
+              size: size,
             );
           }
 
@@ -83,47 +71,84 @@ Widget cardData({
                     ),
                   ),
                 ),
-                Container(
-                  alignment: Alignment.topLeft,
-                  padding: const EdgeInsets.all(15),
-                  child: Column(
-                    spacing: 10,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        indexData.name?.capitalize ?? '',
-                        style: AppTextStyles.title.copyWith(fontSize: 18),
-                      ),
-                      Column(
-                        spacing: 6,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: (data?.types ?? [])
-                            .map((t) => Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8,
-                                    vertical: 4,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white24,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    t.type?.name ?? '',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ))
-                            .toList(),
-                      )
-                    ],
-                  ),
+                _detailData(
+                  controller: controller,
+                  indexData: indexData,
+                  data: data,
+                  size: size,
                 ),
               ],
             ),
           );
         },
+      ),
+    );
+
+Widget _loadData({
+  required HomeViewModel controller,
+  required ResultModel indexData,
+  required Size size,
+}) =>
+    Container(
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: AppColors.grass,
+        borderRadius: BorderRadius.circular(18),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.grass.withOpacity(0.3),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: CircularProgressIndicator(
+        strokeWidth: 4,
+        color: AppColors.white,
+      ),
+    );
+
+Widget _detailData({
+  required HomeViewModel controller,
+  required ResultModel indexData,
+  required PokemonModel? data,
+  required Size size,
+}) =>
+    Container(
+      alignment: Alignment.topLeft,
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        spacing: 10,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            indexData.name?.capitalize ?? '',
+            style: AppTextStyles.title.copyWith(fontSize: 18),
+          ),
+          Column(
+            spacing: 6,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: (data?.types ?? [])
+                .map((t) => Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white24,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        t.type?.name ?? '',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ))
+                .toList(),
+          )
+        ],
       ),
     );

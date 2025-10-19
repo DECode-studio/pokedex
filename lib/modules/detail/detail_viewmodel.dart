@@ -13,6 +13,7 @@ class DetailViewmodel extends GetxController {
   var image = ''.obs;
 
   var pokemon = PokemonModel().obs;
+  var isLiked = false.obs;
   var isLoading = false.obs;
 
   @override
@@ -35,5 +36,14 @@ class DetailViewmodel extends GetxController {
 
     image.value = Api.POKEMON_IMAGE_URL('${pokemon.value.id}');
     isLoading.value = false;
+  }
+
+  void actionMethod({
+    required String mode,
+    dynamic data,
+  }) {
+    if (mode == 'like') {
+      isLiked.value = !isLiked.value;
+    }
   }
 }

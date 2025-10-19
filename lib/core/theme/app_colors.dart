@@ -36,6 +36,7 @@ class AppColors {
   // Common
   static const Color white = Colors.white;
   static const Color black = Colors.black;
+  static const Color purple = Color(0xFF6C79DB);
 
   /// 🔹 Get background color by type name (case-insensitive)
   static Color getBgColor(String type) {
