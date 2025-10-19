@@ -11,10 +11,10 @@ class AppColors {
   static const Color bug = Color(0xFFA6B91A);
   static const Color ghost = Color(0xFF735797);
   static const Color steel = Color(0xFFB7B7CE);
-  static const Color fire = Color(0xFFEE8130);
-  static const Color water = Color(0xFF6390F0);
-  static const Color grass = Color(0xFF7AC74C);
-  static const Color electric = Color(0xFFF7D02C);
+  static const Color fire = Color(0xFFFB6C6C);
+  static const Color water = Color(0xFF77BDFE);
+  static const Color grass = Color(0xFF48D0B0);
+  static const Color electric = Color(0xFFFFD86F);
   static const Color psychic = Color(0xFFF95587);
   static const Color ice = Color(0xFF96D9D6);
   static const Color dragon = Color(0xFF6F35FC);

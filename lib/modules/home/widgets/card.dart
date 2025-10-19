@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pokedex/core/constant/api.dart';
 import 'package:pokedex/core/constant/assets.dart';
 import 'package:pokedex/core/theme/app_colors.dart';
@@ -91,7 +92,7 @@ Widget cardData({
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        indexData.name ?? '',
+                        indexData.name?.capitalize ?? '',
                         style: AppTextStyles.title.copyWith(fontSize: 18),
                       ),
                       Column(
