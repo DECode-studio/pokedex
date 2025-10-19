@@ -173,26 +173,24 @@ Widget _detailMoves({
 }) =>
     SizedBox(
       height: size.height * 0.41,
-      child: Expanded(
-        child: ListView(
-          children: [
-            ...(controller.pokemon.value.moves ?? []).map(
-              (e) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6),
-                child: _detailData(
-                  titleWidth: 150,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  title: (e.move?.name ?? '').replaceAll("-", " ").capitalize ??
-                      '',
-                  value: (e.versionGroupDetails ?? [])
-                      .map((e) =>
-                          ' - ${(e.moveLearnMethod?.name ?? '').replaceAll("-", " ").capitalize ?? ''}')
-                      .toSet()
-                      .join('\n'),
-                ),
+      child: ListView(
+        children: [
+          ...(controller.pokemon.value.moves ?? []).map(
+            (e) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6),
+              child: _detailData(
+                titleWidth: 150,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                title: (e.move?.name ?? '').replaceAll("-", " ").capitalize ??
+                    '',
+                value: (e.versionGroupDetails ?? [])
+                    .map((e) =>
+                        ' - ${(e.moveLearnMethod?.name ?? '').replaceAll("-", " ").capitalize ?? ''}')
+                    .toSet()
+                    .join('\n'),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
