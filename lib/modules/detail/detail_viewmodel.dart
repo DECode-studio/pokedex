@@ -11,8 +11,9 @@ class DetailViewmodel extends GetxController {
 
   var name = ''.obs;
   var image = ''.obs;
-
   var pokemon = PokemonModel().obs;
+
+  var selectedTab = 0.obs;
   var isLiked = false.obs;
   var isLoading = false.obs;
 
@@ -44,6 +45,10 @@ class DetailViewmodel extends GetxController {
   }) {
     if (mode == 'like') {
       isLiked.value = !isLiked.value;
+    }
+
+    if (mode == 'tab-index') {
+      selectedTab.value = data;
     }
   }
 }
