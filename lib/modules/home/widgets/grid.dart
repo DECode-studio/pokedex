@@ -45,9 +45,9 @@ Widget gridData({
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 16,
+                mainAxisSpacing: 15,
                 crossAxisSpacing: 16,
-                childAspectRatio: 1.05,
+                childAspectRatio: 1.25,
               ),
               itemBuilder: (_, index) => cardData(
                 controller: controller,

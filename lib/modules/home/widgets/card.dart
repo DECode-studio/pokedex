@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/core/constant/api.dart';
+import 'package:pokedex/core/constant/assets.dart';
 import 'package:pokedex/core/theme/app_colors.dart';
 import 'package:pokedex/core/theme/app_text_styles.dart';
 import 'package:pokedex/data/models/list_pokemon_model.dart';
@@ -21,6 +22,7 @@ Widget cardData({
         builder: (_, snapshot) {
           if (!snapshot.hasData || snapshot.data == null) {
             return Container(
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 color: AppColors.grass,
                 borderRadius: BorderRadius.circular(18),
@@ -34,7 +36,7 @@ Widget cardData({
               ),
               child: CircularProgressIndicator(
                 strokeWidth: 4,
-                color: AppColors.water,
+                color: AppColors.white,
               ),
             );
           }
@@ -59,33 +61,48 @@ Widget cardData({
             ),
             child: Stack(
               children: [
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Image.network(image, height: 80),
+                  ),
+                ),
                 Positioned(
-                  right: 12,
-                  top: 12,
-                  child: Text(
-                    '#${data?.id.toString().padLeft(3, '0')}',
-                    style: AppTextStyles.label.copyWith(
-                      color: Colors.white70,
+                  bottom: -20,
+                  right: -5,
+                  child: Opacity(
+                    opacity: 0.2,
+                    child: Image.asset(
+                      ImageAsset.poketBallIcon,
+                      width: 110,
+                      height: 110,
+                      fit: BoxFit.cover,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-                Center(
+                Container(
+                  alignment: Alignment.topLeft,
+                  padding: const EdgeInsets.all(15),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 10,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.network(image, height: 70),
-                      const SizedBox(height: 10),
                       Text(
                         indexData.name ?? '',
                         style: AppTextStyles.title.copyWith(fontSize: 18),
                       ),
-                      const SizedBox(height: 6),
-                      Wrap(
+                      Column(
                         spacing: 6,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: (data?.types ?? [])
                             .map((t) => Container(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 4),
+                                    horizontal: 8,
+                                    vertical: 4,
+                                  ),
                                   decoration: BoxDecoration(
                                     color: Colors.white24,
                                     borderRadius: BorderRadius.circular(10),
