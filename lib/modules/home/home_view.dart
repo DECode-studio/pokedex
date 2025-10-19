@@ -5,7 +5,6 @@ import 'package:pokedex/core/theme/app_colors.dart';
 import 'package:pokedex/modules/home/home_viewmodel.dart';
 
 import 'widgets/screen.dart';
-import 'widgets/toolbar.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({super.key});
@@ -21,7 +20,6 @@ class HomeView extends StatelessWidget {
       init: HomeViewModel(),
       builder: (controller) => Scaffold(
         backgroundColor: AppColors.background,
-        appBar: toolBar(),
         body: screenPage(
           controller: controller,
           size: size,

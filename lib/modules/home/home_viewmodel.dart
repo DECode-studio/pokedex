@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:pokedex/core/utils/interface.dart';
 import 'package:pokedex/core/utils/log.dart';
 import 'package:pokedex/core/widgets/floating_loading.dart';
 import 'package:pokedex/data/models/list_pokemon_model.dart';
@@ -15,6 +16,7 @@ class HomeViewModel extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    fullScreenInterface();
     loadData();
   }
 

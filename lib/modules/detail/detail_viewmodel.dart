@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:pokedex/core/constant/api.dart';
+import 'package:pokedex/core/utils/interface.dart';
 import 'package:pokedex/core/utils/navigattion.dart';
 import 'package:pokedex/data/models/pokemon_model.dart';
 import 'package:pokedex/data/services/pokemon_service.dart';
@@ -17,6 +18,7 @@ class DetailViewmodel extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    fullScreenInterface();
     loadData();
   }
 
