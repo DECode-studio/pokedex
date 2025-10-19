@@ -15,6 +15,8 @@ class DetailViewmodel extends GetxController {
 
   var selectedTab = 0.obs;
   var isLiked = false.obs;
+
+  var isTaped = false.obs;
   var isLoading = false.obs;
 
   @override
@@ -49,6 +51,10 @@ class DetailViewmodel extends GetxController {
 
     if (mode == 'tab-index') {
       selectedTab.value = data;
+    }
+
+    if (mode == 'tap') {
+      isTaped.value = !isTaped.value;
     }
   }
 }

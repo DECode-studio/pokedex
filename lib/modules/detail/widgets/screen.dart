@@ -39,8 +39,34 @@ Widget screenPage({
                 controller: controller,
                 size: size,
               ),
+              _animationImage(
+                controller: controller,
+                size: size,
+              ),
             ],
           );
+
+Widget _animationImage({
+  required DetailViewmodel controller,
+  required Size size,
+}) =>
+    GestureDetector(
+      onTap: () => controller.actionMethod(mode: 'tap'),
+      child: Container(
+        alignment: Alignment.bottomRight,
+        margin: const EdgeInsets.all(30),
+        child: Image.network(
+          controller.isTaped.value
+              ? (controller
+                      .pokemon.value.sprites?.other?.showdown?.frontShiny ??
+                  '')
+              : (controller
+                      .pokemon.value.sprites?.other?.showdown?.frontDefault ??
+                  ''),
+          // height: 50,
+        ),
+      ),
+    );
 
 Widget _poketImage({
   required DetailViewmodel controller,

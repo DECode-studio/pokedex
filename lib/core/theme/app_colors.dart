@@ -38,7 +38,6 @@ class AppColors {
   static const Color black = Colors.black;
   static const Color purple = Color(0xFF6C79DB);
 
-  /// 🔹 Get background color by type name (case-insensitive)
   static Color getBgColor(String type) {
     switch (type.toLowerCase()) {
       case 'normal':
@@ -82,7 +81,7 @@ class AppColors {
       case 'unknown':
         return unknown;
       default:
-        return grass; // fallback
+        return grass;
     }
   }
 }
